@@ -50,7 +50,7 @@ function updateDonationProgress(currentAmount) {
     
     progressBar.style.transition = 'width 0.5s';
     progressBar.style.width = `${percentage}%`;
-    progressText.textContent = `$${currentAmount.toFixed(2)} / $${goalAmount}`;
+    progressText.textContent = `$${currentAmount.toFixed(2)} / $${goalAmount.toLocaleString()}`;
 }
 
 // Function to add a new donation and animate the progress
