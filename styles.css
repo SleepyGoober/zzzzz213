@@ -31,8 +31,14 @@ body {
 }
 
 .progress-bar {
-    background: #4CAF50;
+    background: transparent;
     height: 20px;
+    width: 100%;
+}
+
+.progress {
+    background: #4CAF50;
+    height: 100%;
     width: 0%;
     transition: width 0.5s;
 }
