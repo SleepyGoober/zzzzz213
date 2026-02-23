@@ -41,15 +41,15 @@ function updateDonationProgress(currentAmount) {
     
     const percentage = (currentAmount / goalAmount) * 100;
     
-    // Force animation by resetting width, then updating it
+    // Force animation by resetting height, then updating it
     progressBar.style.transition = 'none';
-    progressBar.style.width = '0%';
+    progressBar.style.height = '0%';
     
     // Trigger reflow to ensure the animation restarts
-    void progressBar.offsetWidth;
+    void progressBar.offsetHeight;
     
-    progressBar.style.transition = 'width 0.5s';
-    progressBar.style.width = `${percentage}%`;
+    progressBar.style.transition = 'height 0.5s';
+    progressBar.style.height = `${percentage}%`;
     progressText.textContent = `$${currentAmount.toFixed(2)} / $${goalAmount}`;
 }
 
