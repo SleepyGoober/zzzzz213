@@ -41,4 +41,4 @@ function updateDonationProgress(currentAmount, goalAmount) {
 }
 
 // Example of updating progress. You can call this function upon donation.
-updateDonationProgress(0, 10000);
+updateDonationProgress(4.69, 10000);
