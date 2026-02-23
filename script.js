@@ -30,15 +30,35 @@ window.onclick = function(event) {
     }
 };
 
-// Optional: Add functionality to update the donation goal progress (mockup)
-function updateDonationProgress(currentAmount, goalAmount) {
+// Donation tracking variables
+let currentDonationAmount = 4.69;
+const goalAmount = 10000;
+
+// Function to update the donation goal progress with animation
+function updateDonationProgress(currentAmount) {
     const progressBar = document.querySelector('.progress');
     const progressText = document.querySelector('.progress-text');
     
     const percentage = (currentAmount / goalAmount) * 100;
+    
+    // Force animation by resetting width, then updating it
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    
+    // Trigger reflow to ensure the animation restarts
+    void progressBar.offsetWidth;
+    
+    progressBar.style.transition = 'width 0.5s';
     progressBar.style.width = `${percentage}%`;
-    progressText.textContent = `$${currentAmount} / $${goalAmount}`;
+    progressText.textContent = `$${currentAmount.toFixed(2)} / $${goalAmount}`;
 }
 
-// Example of updating progress. You can call this function upon donation.
-updateDonationProgress(4.69, 10000);
+// Function to add a new donation and animate the progress
+function addDonation(donationAmount) {
+    currentDonationAmount += donationAmount;
+    updateDonationProgress(currentDonationAmount);
+    console.log(`Donation added! New total: $${currentDonationAmount.toFixed(2)}`);
+}
+
+// Initialize the progress bar with current amount
+updateDonationProgress(currentDonationAmount);
