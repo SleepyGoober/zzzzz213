@@ -31,7 +31,7 @@ window.onclick = function(event) {
 };
 
 // Donation tracking variables
-let currentDonationAmount = 35.69;
+let currentDonationAmount = 42.69;
 const goalAmount = 10000;
 
 // Function to update the donation goal progress with animation
