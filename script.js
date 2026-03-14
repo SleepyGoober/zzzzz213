@@ -35,20 +35,24 @@ let currentDonationAmount = 95.53;
 const goalAmount = 1000;
 
 // Function to update the donation goal progress with animation
-function updateDonationProgress(currentAmount) {
+function updateDonationProgress(currentAmount, animate = true) {
     const progressBar = document.querySelector('.progress');
     const progressText = document.querySelector('.progress-text');
     
-    const percentage = (currentAmount / goalAmount) * 100;
+    const percentage = Math.min(100, (currentAmount / goalAmount) * 100);
     
-    // Force animation by resetting width, then updating it
-    progressBar.style.transition = 'none';
-    progressBar.style.width = '0%';
-    
-    // Trigger reflow to ensure the animation restarts
-    void progressBar.offsetWidth;
-    
-    progressBar.style.transition = 'width 0.5s';
+    if (animate) {
+        // Force animation by resetting width, then updating it
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        
+        // Trigger reflow to ensure the animation restarts
+        void progressBar.offsetWidth;
+        
+        progressBar.style.transition = 'width 0.5s';
+    } else {
+        progressBar.style.transition = 'none';
+    }
     progressBar.style.width = `${percentage}%`;
     progressText.textContent = `$${currentAmount.toFixed(2)} / $${goalAmount.toLocaleString()}`;
 }
@@ -56,9 +60,9 @@ function updateDonationProgress(currentAmount) {
 // Function to add a new donation and animate the progress
 function addDonation(donationAmount) {
     currentDonationAmount += donationAmount;
-    updateDonationProgress(currentDonationAmount);
+    updateDonationProgress(currentDonationAmount, true);
     console.log(`Donation added! New total: $${currentDonationAmount.toFixed(2)}`);
 }
 
 // Initialize the progress bar with current amount
-updateDonationProgress(currentDonationAmount);
+updateDonationProgress(currentDonationAmount, false);
