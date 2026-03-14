@@ -35,6 +35,7 @@ body {
     background: transparent;
     height: 30px;
     width: 100%;
+    position: relative;
 }
 
 .progress {
@@ -48,7 +49,13 @@ body {
 .progress-text {
     font-size: 16px;
     font-weight: bold;
-    margin-top: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    margin: 0;
+    z-index: 1;
 }
 
 .crypto-section, .reviews-section {
