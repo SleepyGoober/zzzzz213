@@ -23,6 +23,11 @@ body {
     margin-bottom: 20px;
 }
 
+.trump-video {
+    max-width: 400px;
+    height: auto;
+}
+
 .progress-container {
     width: 100%;
     background: #ddd;
@@ -57,7 +62,6 @@ body {
     margin: 0;
     z-index: 1;
 }
-
 .crypto-section, .reviews-section {
     width: 100%;
     margin: 10px 0;
