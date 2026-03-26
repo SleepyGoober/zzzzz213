@@ -34,35 +34,83 @@ window.onclick = function(event) {
 let currentDonationAmount = 5; // Bray donated $5
 const goalAmount = 1000;
 
-// Function to update the donation goal progress with animation
+// Leaderboard state
+let leaderboard = [
+    { name: 'Bray', amount: 5 },
+    { name: 'unknown', amount: 0 },
+    { name: 'unknown', amount: 0 },
+    { name: 'unknown', amount: 0 },
+    { name: 'unknown', amount: 0 }
+];
+
+function renderLeaderboard() {
+    const container = document.getElementById('leaderboard-container');
+    container.innerHTML = '';
+    leaderboard.forEach((entry, idx) => {
+        const item = document.createElement('div');
+        item.className = 'leaderboard-item';
+        item.innerHTML = `<p><strong>${idx + 1}. ${entry.name}</strong> - $${entry.amount.toFixed(2)}</p>`;
+        container.appendChild(item);
+    });
+}
+
 function updateDonationProgress(currentAmount, animate = true) {
     const progressBar = document.querySelector('.progress');
     const progressText = document.querySelector('.progress-text');
-    
     const percentage = Math.min(100, (currentAmount / goalAmount) * 100);
-    
+
     if (animate) {
-        // Force animation by resetting width, then updating it
         progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
-        
-        // Trigger reflow to ensure the animation restarts
         void progressBar.offsetWidth;
-        
         progressBar.style.transition = 'width 0.5s';
     } else {
         progressBar.style.transition = 'none';
     }
+
     progressBar.style.width = `${percentage}%`;
     progressText.textContent = `$${currentAmount.toFixed(2)} / $${goalAmount.toLocaleString()}`;
 }
 
-// Function to add a new donation and animate the progress
-function addDonation(donationAmount) {
+function addDonation(donor, donationAmount) {
+    donationAmount = Number(donationAmount);
+    if (!donor || typeof donor !== 'string' || donor.trim() === '') donor = 'anonymous';
+    if (Number.isNaN(donationAmount) || donationAmount <= 0) {
+        alert('Please enter a valid donation amount greater than 0');
+        return;
+    }
+
     currentDonationAmount += donationAmount;
     updateDonationProgress(currentDonationAmount, true);
-    console.log(`Donation added! New total: $${currentDonationAmount.toFixed(2)}`);
+
+    const existing = leaderboard.find(item => item.name.toLowerCase() === donor.trim().toLowerCase());
+    if (existing) {
+        existing.amount += donationAmount;
+    } else {
+        leaderboard.push({ name: donor.trim(), amount: donationAmount });
+    }
+
+    leaderboard.sort((a, b) => b.amount - a.amount);
+    leaderboard = leaderboard.slice(0, 5);
+    if (leaderboard.length < 5) {
+        while (leaderboard.length < 5) leaderboard.push({ name: 'unknown', amount: 0 });
+    }
+
+    renderLeaderboard();
+
+    document.getElementById('donor-name').value = '';
+    document.getElementById('donation-amount').value = '';
+    console.log(`Donation added by ${donor}: $${donationAmount.toFixed(2)} (total: $${currentDonationAmount.toFixed(2)})`);
 }
 
-// Initialize the progress bar with current amount
+const donateButton = document.getElementById('donate-button');
+if (donateButton) {
+    donateButton.addEventListener('click', () => {
+        const donorName = document.getElementById('donor-name').value;
+        const donationAmount = document.getElementById('donation-amount').value;
+        addDonation(donorName, donationAmount);
+    });
+}
+
+renderLeaderboard();
 updateDonationProgress(currentDonationAmount, false);
