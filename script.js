@@ -34,7 +34,6 @@ window.onclick = function(event) {
 let currentDonationAmount = 5; // Bray donated $5
 const goalAmount = 1000;
 
-// Leaderboard state
 let leaderboard = [
     { name: 'Bray', amount: 5 },
     { name: 'unknown', amount: 0 },
@@ -45,11 +44,13 @@ let leaderboard = [
 
 function renderLeaderboard() {
     const container = document.getElementById('leaderboard-container');
+    if (!container) return;
     container.innerHTML = '';
-    leaderboard.forEach((entry, idx) => {
+
+    leaderboard.forEach((entry, index) => {
         const item = document.createElement('div');
         item.className = 'leaderboard-item';
-        item.innerHTML = `<p><strong>${idx + 1}. ${entry.name}</strong> - $${entry.amount.toFixed(2)}</p>`;
+        item.innerHTML = `<p><strong>${index + 1}. ${entry.name}</strong> - $${entry.amount.toFixed(2)}</p>`;
         container.appendChild(item);
     });
 }
@@ -73,34 +74,34 @@ function updateDonationProgress(currentAmount, animate = true) {
 }
 
 function addDonation(donor, donationAmount) {
-    donationAmount = Number(donationAmount);
-    if (!donor || typeof donor !== 'string' || donor.trim() === '') donor = 'anonymous';
-    if (Number.isNaN(donationAmount) || donationAmount <= 0) {
+    const amount = Number(donationAmount);
+    if (!donor || donor.trim() === '') donor = 'anonymous';
+    if (!amount || amount <= 0) {
         alert('Please enter a valid donation amount greater than 0');
         return;
     }
 
-    currentDonationAmount += donationAmount;
-    updateDonationProgress(currentDonationAmount, true);
-
+    currentDonationAmount += amount;
     const existing = leaderboard.find(item => item.name.toLowerCase() === donor.trim().toLowerCase());
+
     if (existing) {
-        existing.amount += donationAmount;
+        existing.amount += amount;
     } else {
-        leaderboard.push({ name: donor.trim(), amount: donationAmount });
+        leaderboard.push({ name: donor.trim(), amount });
     }
 
     leaderboard.sort((a, b) => b.amount - a.amount);
     leaderboard = leaderboard.slice(0, 5);
-    if (leaderboard.length < 5) {
-        while (leaderboard.length < 5) leaderboard.push({ name: 'unknown', amount: 0 });
+
+    while (leaderboard.length < 5) {
+        leaderboard.push({ name: 'unknown', amount: 0 });
     }
 
+    updateDonationProgress(currentDonationAmount, true);
     renderLeaderboard();
 
     document.getElementById('donor-name').value = '';
     document.getElementById('donation-amount').value = '';
-    console.log(`Donation added by ${donor}: $${donationAmount.toFixed(2)} (total: $${currentDonationAmount.toFixed(2)})`);
 }
 
 const donateButton = document.getElementById('donate-button');
