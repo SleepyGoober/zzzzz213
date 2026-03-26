@@ -31,7 +31,7 @@ window.onclick = function(event) {
 };
 
 // Donation tracking variables
-let currentDonationAmount = 0;
+let currentDonationAmount = 5; // Bray donated $5
 const goalAmount = 1000;
 
 // Function to update the donation goal progress with animation
