@@ -31,11 +31,11 @@ window.onclick = function(event) {
 };
 
 // Donation tracking variables
-let currentDonationAmount = 5; // Bray donated $5
+let currentDonationAmount = 0;
 const goalAmount = 1000;
 
 let leaderboard = [
-    { name: 'Bray', amount: 5 },
+    { name: 'unknown', amount: 5 },
     { name: 'unknown', amount: 0 },
     { name: 'unknown', amount: 0 },
     { name: 'unknown', amount: 0 },
