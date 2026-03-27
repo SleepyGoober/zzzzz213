@@ -32,7 +32,7 @@ window.onclick = function(event) {
 
 // Donation tracking variables
 let currentDonationAmount = 0;
-const goalAmount = 1000;
+const goalAmount = 734;
 
 let leaderboard = [
     { name: 'unknown', amount: 0 },
