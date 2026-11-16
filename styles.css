@@ -1,184 +1,795 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+:root {
+    color-scheme: light;
+    --ink: #172620;
+    --muted: #718078;
+    --green: #217a59;
+    --green-dark: #176345;
+    --mint: #e8f4ed;
+    --line: #e5ebe7;
+    --surface: #ffffff;
+    --background: #f4f7f5;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.header {
-    background-color: #4CAF50;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 50% 0, rgba(210, 235, 219, 0.62), transparent 38rem),
+        var(--background);
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+button {
+    font: inherit;
+}
+
+.page-shell {
+    width: min(100% - 40px, 1000px);
+    margin: 0 auto;
+}
+
+.site-header {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(23, 38, 32, 0.08);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 750;
+    letter-spacing: -0.04em;
+}
+
+.brand-mark {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--green);
     color: white;
-    padding: 20px;
+    font-size: 20px;
+}
+
+.secure-note {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.secure-note span {
+    color: var(--green);
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.hero {
+    max-width: 700px;
+    margin: 72px auto 34px;
     text-align: center;
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.eyebrow {
+    margin: 0 0 9px;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
 }
 
-.video-section {
-    margin-bottom: 20px;
-}
-
-.trump-video {
-    max-width: 300px;
-    height: auto;
-}
-
-.progress-container {
-    width: 100%;
-    background: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 20px 0;
-}
-
-.progress-bar {
-    background: transparent;
-    height: 30px;
-    width: 100%;
-    position: relative;
-}
-
-.progress {
-    background: linear-gradient(90deg, #4CAF50 0%, #4CAF50 48%, rgba(0,0,0,0.1) 50%, #4CAF50 52%, #4CAF50 100%);
-    background-size: 10px 100%;
-    height: 100%;
-    width: 0%;
-    transition: width 0.5s;
-}
-
-.progress-text {
-    font-size: 16px;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
+.hero h1 {
     margin: 0;
-    z-index: 1;
-}
-.crypto-section, .reviews-section {
-    width: 100%;
-    margin: 10px 0;
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
 }
 
-.crypto-box {
-    background: white;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.hero-copy {
+    max-width: 550px;
+    margin: 18px auto 0;
+    color: #64736a;
+    font-size: 17px;
+}
+
+.goal-card {
+    padding: 24px 28px 20px;
+    border: 1px solid rgba(33, 122, 89, 0.1);
+    border-radius: 16px;
+    background: linear-gradient(115deg, #fff 0%, #f5fbf7 100%);
+    box-shadow: 0 12px 35px rgba(27, 55, 40, 0.055);
+}
+
+.goal-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.goal-heading h2,
+.section-heading h2 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: -0.025em;
+}
+
+.goal-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.goal-amount strong {
+    font-size: 23px;
+    letter-spacing: -0.04em;
+}
+
+.goal-amount span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.progress-track {
+    height: 9px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #e5eee8;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #32966b, #70bb8e);
+}
+
+.goal-note {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.reasons-section {
+    padding: 46px 0 0;
+}
+
+.reasons-heading {
+    margin-bottom: 17px;
+}
+
+.reasons-heading h2 {
+    margin: 0;
+    font-size: clamp(20px, 3vw, 25px);
+    letter-spacing: -0.035em;
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.reason-card {
+    padding: 19px;
+    border: 1px solid rgba(80, 213, 154, 0.14);
+    border-radius: 13px;
+    background: rgba(17, 26, 22, 0.82);
+}
+
+.reason-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 13px;
+    border-radius: 10px;
+    background: rgba(0, 255, 153, 0.1);
+    color: #82ffc2;
+    font-size: 18px;
+    text-shadow: 0 0 12px rgba(0, 255, 153, 0.55);
+}
+
+.reason-card h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+}
+
+.reason-card p {
+    margin: 0;
+    color: #a4b4aa;
+    font-size: 13px;
+}
+
+.donation-disclosure {
+    margin: 14px 0 0;
+    color: #84968b;
+    font-size: 12px;
+}
+
+.donation-section {
+    padding: 48px 0 0;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+}
+
+.section-hint {
+    max-width: 270px;
+    margin: 0 0 3px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: right;
+}
+
+.crypto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.crypto-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 5px 16px rgba(27, 55, 40, 0.035);
+    transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.crypto-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+.crypto-card:hover {
+    transform: translateY(-2px);
+    border-color: #c9ded1;
+    box-shadow: 0 10px 24px rgba(27, 55, 40, 0.075);
+}
+
+.coin-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.coin-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 13px;
+    font-size: 23px;
+    font-weight: 750;
+}
+
+.bitcoin {
+    background: #fff3e5;
+    color: #d98b22;
+}
+
+.ethereum {
+    background: #eef0ff;
+    color: #6571bf;
+}
+
+.litecoin {
+    background: #edf2f7;
+    color: #61778e;
+}
+
+.solana {
+    background: #f0ebfb;
+    color: #7653a8;
+}
+
+.monero {
+    background: #fff0e8;
+    color: #cc6c38;
+}
+
+.coin-heading h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+.ticker {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.address-label {
+    margin: 20px 0 7px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 .address-container {
     display: flex;
     align-items: center;
+    gap: 9px;
 }
 
-.address-container button {
-    margin-left: 10px;
+.address-container code {
+    min-width: 0;
+    overflow: hidden;
+    color: #47574d;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.leaderboard-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.donation-form {
-    display: flex;
-    gap: 10px;
-    margin: 10px 0 15px;
-    text-align: center;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.donation-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 180px;
-    max-width: 100%;
-}
-
-.donation-form button {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 4px;
+.copy-button {
+    min-height: 36px;
+    flex: 0 0 auto;
+    padding: 0 13px;
+    border: 1px solid #d5e8dc;
+    border-radius: 9px;
+    background: var(--mint);
+    color: var(--green-dark);
     cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 750;
+    transition: background 150ms ease, border-color 150ms ease;
 }
 
-.leaderboard-container {
+.copy-button:hover {
+    border-color: #b6d7c3;
+    background: #dcefe3;
+}
+
+.copy-button:focus-visible {
+    outline: 3px solid rgba(33, 122, 89, 0.3);
+    outline-offset: 2px;
+}
+
+.copy-feedback {
+    display: block;
+    min-height: 17px;
+    margin-top: 4px;
+    color: var(--green-dark);
+    font-size: 11px;
+}
+
+.reminder {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 100%;
+    gap: 13px;
+    margin: 26px 0 0;
+    padding: 15px 18px;
+    border: 1px solid #f0e2bf;
+    border-radius: 12px;
+    background: #fffaf0;
 }
 
-.leaderboard-item {
-    background: white;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    font-size: 18px;
-    width: 80%;
-    max-width: 400px;
+.reminder-icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: #f7e9c9;
+    color: #80621f;
+    font-weight: 800;
+}
+
+.reminder p {
+    margin: 0;
+    color: #756b54;
+    font-size: 12px;
+}
+
+.reminder strong {
+    color: #51472f;
 }
 
 .footer {
+    padding: 26px 0 32px;
+    color: #849087;
+    font-size: 12px;
     text-align: center;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
 }
 
-.info-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #F44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
+.footer p {
+    margin: 0;
 }
 
-.popup {
+.footer span {
+    padding: 0 5px;
+    color: #b2bcb5;
+}
+
+@media (max-width: 640px) {
+    .page-shell {
+        width: min(100% - 28px, 480px);
+    }
+
+    .site-header {
+        min-height: 66px;
+    }
+
+    .secure-note {
+        font-size: 11px;
+    }
+
+    .hero {
+        margin: 50px auto 27px;
+    }
+
+    .hero h1 {
+        font-size: clamp(34px, 10vw, 46px);
+    }
+
+    .hero-copy {
+        font-size: 15px;
+    }
+
+    .goal-card {
+        padding: 20px;
+    }
+
+    .goal-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .goal-amount {
+        gap: 6px;
+    }
+
+    .goal-amount strong {
+        font-size: 21px;
+    }
+
+    .donation-section {
+        padding-top: 37px;
+    }
+
+    .reasons-section {
+        padding-top: 36px;
+    }
+
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .reason-card {
+        padding: 16px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .section-hint {
+        max-width: none;
+        text-align: left;
+    }
+
+    .crypto-grid {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .crypto-card {
+        padding: 17px;
+    }
+
+    .crypto-card:last-child:nth-child(odd) {
+        grid-column: auto;
+    }
+
+    .address-container code {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+:root {
+    color-scheme: dark;
+    --ink: #e8f4ec;
+    --muted: #91a399;
+    --green: #50d59a;
+    --green-dark: #7be8b0;
+    --mint: #183b2c;
+    --line: #263a30;
+    --surface: #111a16;
+    --background: #090e0c;
+    --pointer-x: 50%;
+    --pointer-y: 20%;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 50% -10%, rgba(20, 148, 88, 0.3), transparent 42rem),
+        var(--background);
+}
+
+body::before,
+body::after {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+}
+
+body::before {
+    opacity: 0.9;
+    background:
+        radial-gradient(ellipse at 18% 28%, rgba(0, 255, 142, 0.23), transparent 30%),
+        radial-gradient(ellipse at 82% 68%, rgba(0, 205, 255, 0.2), transparent 33%),
+        radial-gradient(ellipse at 55% 110%, rgba(107, 255, 73, 0.16), transparent 38%);
+    background-size: 140% 140%;
+    animation: ambient-drift 24s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: radial-gradient(
+        430px circle at var(--pointer-x) var(--pointer-y),
+        rgba(0, 255, 170, 0.19),
+        transparent 72%
+    );
+    opacity: 0.85;
+    transition: opacity 350ms ease;
+}
+
+@keyframes ambient-drift {
+    from {
+        background-position: 0% 0%, 100% 100%, 55% 100%;
+    }
+
+    to {
+        background-position: 35% 18%, 72% 70%, 35% 82%;
+    }
+}
+
+.page-shell {
+    position: relative;
+    z-index: 1;
+}
+
+.site-header {
+    border-bottom-color: rgba(190, 224, 204, 0.1);
+}
+
+.brand-name {
+    color: #c4ffe1;
+    text-shadow: 0 0 7px rgba(0, 255, 153, 0.95), 0 0 18px rgba(0, 255, 153, 0.78), 0 0 38px rgba(0, 218, 255, 0.45);
+}
+
+.brand-mark {
+    background: #087b4b;
+    color: #e6fff2;
+    box-shadow: 0 0 15px rgba(0, 255, 142, 0.62), 0 0 30px rgba(0, 255, 142, 0.32);
+}
+
+.hero-copy {
+    color: #a4b4aa;
+}
+
+.goal-card {
+    border-color: rgba(0, 255, 153, 0.25);
+    background: linear-gradient(115deg, rgba(18, 30, 24, 0.97), rgba(16, 34, 25, 0.94));
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.goal-amount strong {
+    color: #c5ffe0;
+    text-shadow: 0 0 7px rgba(0, 255, 153, 1), 0 0 18px rgba(0, 255, 153, 0.82), 0 0 36px rgba(0, 218, 255, 0.52);
+}
+
+.progress-track {
+    background: #20342a;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #00e887, #00f5ff 55%, #c5ff00);
+    box-shadow: 0 0 12px rgba(0, 255, 153, 0.8), 0 0 24px rgba(0, 220, 255, 0.4);
+}
+
+.crypto-card {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.13);
+}
+
+.crypto-card:hover {
+    border-color: rgba(0, 255, 153, 0.5);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22), 0 0 26px rgba(0, 255, 153, 0.13), 0 0 38px rgba(0, 210, 255, 0.07);
+}
+
+.leaderboard-section {
+    margin-top: 42px;
+    padding: 22px;
+    border: 1px solid rgba(0, 255, 153, 0.18);
+    border-radius: 15px;
+    background: rgba(14, 23, 18, 0.9);
+}
+
+.leaderboard-heading {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+.leaderboard-heading h2 {
+    margin: 0;
+    font-size: 21px;
+    letter-spacing: -0.03em;
 }
 
-.close-btn {
-    cursor: pointer;
-    font-size: 20px;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+.leaderboard-badge {
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 255, 153, 0.2);
+    border-radius: 99px;
+    background: rgba(0, 255, 153, 0.07);
+    color: #a4eac3;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.leaderboard-empty {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px dashed rgba(145, 163, 153, 0.24);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.leaderboard-icon {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(0, 255, 153, 0.1);
+    color: #82ffc2;
+    text-shadow: 0 0 12px rgba(0, 255, 153, 0.55);
+}
+
+.leaderboard-empty p {
+    margin: 0;
+    color: #a4b4aa;
+    font-size: 13px;
+}
+
+.leaderboard-empty strong {
+    color: var(--ink);
+}
+
+.leaderboard-note {
+    margin: 11px 0 0;
+    color: #84968b;
+    font-size: 11px;
+}
+
+.bitcoin {
+    background: #382719;
+    color: #f3ad50;
+}
+
+.ethereum {
+    background: #252943;
+    color: #a7b0ff;
+}
+
+.litecoin {
+    background: #25313b;
+    color: #a8c2d8;
+}
+
+.solana {
+    background: #302541;
+    color: #c6a2ff;
+}
+
+.monero {
+    background: #3a281f;
+    color: #ffad79;
+}
+
+.address-container code {
+    color: #c0cec5;
+}
+
+.copy-button {
+    border-color: #315a43;
+    background: #193827;
+    color: #aaf2c5;
+}
+
+.copy-button:hover {
+    border-color: #4b8c62;
+    background: #214832;
+}
+
+.copy-button:focus-visible {
+    outline-color: rgba(0, 255, 153, 0.65);
+}
+
+.reminder {
+    border-color: #51442a;
+    background: rgba(37, 31, 20, 0.82);
+}
+
+.reminder-icon {
+    background: #493a20;
+    color: #f2ca78;
+}
+
+.reminder p {
+    color: #c2b28f;
+}
+
+.reminder strong {
+    color: #f0d99e;
+}
+
+.footer {
+    color: #899a90;
+}
+
+.footer span {
+    color: #607068;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none;
+    }
+
+    body::after {
+        display: none;
+    }
 }

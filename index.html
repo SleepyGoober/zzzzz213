@@ -3,140 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b100e">
     <title>Support gooner</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="main-container">
-        <!-- Header -->
-        <header class="header">
-            <h1>Tip gooner</h1>
-            <p>Your support helps me create amazing content. Thank you! 🚀</p>
+    <main class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="#" aria-label="gooner support home">
+                <span class="brand-mark" aria-hidden="true">g</span>
+                <span class="brand-name">gooner</span>
+            </a>
+            <span class="secure-note"><span aria-hidden="true">◆</span> Direct crypto support</span>
         </header>
 
-        <!-- Content Wrapper (Flex Layout) -->
-        <div class="content-wrapper">
-            <div class="top-section">
-                <!-- Trump Video -->
-                <div class="video-section">
-                    <video controls class="trump-video">
-                        <source src="https://elontalks.s3.amazonaws.com/dc040bc8-5b85-477c-b674-1761c63cc0dc.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+        <section class="hero" aria-labelledby="page-title">
+            <p class="eyebrow">THANK YOU FOR BEING HERE</p>
+            <h1 id="page-title">Help make more<br class="desktop-break"> good things happen.</h1>
+            <p class="hero-copy">Your support helps gooner keep creating. Every contribution is appreciated, whatever the amount.</p>
+        </section>
 
-                <!-- Donation Goal -->
-                <div class="goal-section">
-                    <h2>Donation Goal</h2>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 0%;"></div>
-                            <p class="progress-text">$0.00 / $1,000</p>
-                        </div>
-                    </div>
+        <section class="goal-card" aria-labelledby="goal-title">
+            <div class="goal-heading">
+                <div>
+                    <p class="eyebrow">COMMUNITY GOAL</p>
+                    <h2 id="goal-title">A little support goes a long way</h2>
                 </div>
+                <div class="goal-amount"><strong>$0</strong><span>raised of $1,000</span></div>
+            </div>
+            <div class="progress-track" role="progressbar" aria-label="Donation goal progress" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="goal-note">Choose a cryptocurrency below to send support directly.</p>
+        </section>
+
+        <section class="reasons-section" aria-labelledby="reasons-title">
+            <div class="reasons-heading">
+                <p class="eyebrow">WHY YOUR SUPPORT MATTERS</p>
+                <h2 id="reasons-title">A small gesture can keep good things going.</h2>
+            </div>
+            <div class="reasons-grid">
+                <article class="reason-card">
+                    <span class="reason-icon" aria-hidden="true">✦</span>
+                    <h3>Keep creating</h3>
+                    <p>Your support encourages gooner to keep making and sharing new content.</p>
+                </article>
+                <article class="reason-card">
+                    <span class="reason-icon" aria-hidden="true">↗</span>
+                    <h3>Make room for new ideas</h3>
+                    <p>Every contribution helps build momentum for future projects and creative plans.</p>
+                </article>
+                <article class="reason-card">
+                    <span class="reason-icon" aria-hidden="true">♡</span>
+                    <h3>Give what feels right</h3>
+                    <p>There is no required amount. Any support is appreciated, and giving is always optional.</p>
+                </article>
+            </div>
+            <p class="donation-disclosure">Support is a voluntary donation, not a loan or investment. No repayment or financial return is promised.</p>
+        </section>
+
+        <section class="donation-section" aria-labelledby="donation-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">CHOOSE YOUR CURRENCY</p>
+                    <h2 id="donation-title">Support with crypto</h2>
+                </div>
+                <p class="section-hint">Select the matching network in your wallet before sending.</p>
             </div>
 
-            <!-- Crypto Addresses and Reviews in a Scrollable Container -->
-            <div class="scrollable-container">
-                <!-- Crypto Addresses -->
-                <div class="crypto-section">
-                    <div class="crypto-box">
-                        <p><strong>Bitcoin (BTC)</strong></p>
-                        <div class="address-container">
-                            <span id="btc-address">bc1q825swpuzfx7nm0a0fgmnmzj4y9dev3dec6geuv</span>
-                            <button onclick="copyAddress('btc-address')">Copy</button>
-                        </div>
+            <div class="crypto-grid">
+                <article class="crypto-card">
+                    <div class="coin-heading">
+                        <span class="coin-icon bitcoin" aria-hidden="true">₿</span>
+                        <div><h3>Bitcoin</h3><span class="ticker">BTC</span></div>
                     </div>
-                    <div class="crypto-box">
-                        <p><strong>Ethereum (ETH)</strong></p>
-                        <div class="address-container">
-                            <span id="eth-address">0xa67BB302d9846De757c5408AAfC1bBDEC01964B5</span>
-                            <button onclick="copyAddress('eth-address')">Copy</button>
-                        </div>
+                    <p class="address-label">Wallet address</p>
+                    <div class="address-container">
+                        <code id="btc-address">bc1q825swpuzfx7nm0a0fgmnmzj4y9dev3dec6geuv</code>
+                        <button type="button" class="copy-button" onclick="copyAddress('btc-address')">Copy</button>
                     </div>
-                    <div class="crypto-box">
-                        <p><strong>Litecoin (LTC)</strong></p>
-                        <div class="address-container">
-                            <span id="ltc-address">Ld9MM9EbTPbKS3SCNswz7DgodFCD3Jsy5A</span>
-                            <button onclick="copyAddress('ltc-address')">Copy</button>
-                        </div>
-                    </div>
-                    <div class="crypto-box">
-                        <p><strong>Solana (SOL)</strong></p>
-                        <div class="address-container">
-                            <span id="sol-address">kJ9oFSqJPrJyjpzvkjHBrx76pwgFp55KcfjhzvhfZNd</span>
-                            <button onclick="copyAddress('sol-address')">Copy</button>
-                        </div>
-                    </div>
-                    <div class="crypto-box">
-                        <p><strong>Monero (XMR)</strong></p>
-                        <div class="address-container">
-                            <span id="xmr-address">44oBqR4efwifQe4PHGexRVGFuoBKQz4nxAeR6p9Ee7oZ44tamYJfh8EUQGuVKjHMjtEHF19WtFXXzZ1V3srr53zURDFhueA</span>
-                            <button onclick="copyAddress('xmr-address')">Copy</button>
-                        </div>
-                    </div>
-                </div>
+                    <span class="copy-feedback" aria-live="polite"></span>
+                </article>
 
-                <!-- Reviews -->
-                <div class="reviews-section">
-                    <h2>What People Say</h2>
-                    <div class="reviews-container">
-                        <div class="review">
-                            <p>"⭐gooner helped me a lot, and I’m happy to pay them back now!"</p>
-                        </div>
-                        <div class="review">
-                            <p>"⭐I loved gooner! He was both insightful and entertaining."</p>
-                        </div>
+                <article class="crypto-card">
+                    <div class="coin-heading">
+                        <span class="coin-icon ethereum" aria-hidden="true">◆</span>
+                        <div><h3>Ethereum</h3><span class="ticker">ETH</span></div>
                     </div>
-                </div>
+                    <p class="address-label">Wallet address</p>
+                    <div class="address-container">
+                        <code id="eth-address">0xa67BB302d9846De757c5408AAfC1bBDEC01964B5</code>
+                        <button type="button" class="copy-button" onclick="copyAddress('eth-address')">Copy</button>
+                    </div>
+                    <span class="copy-feedback" aria-live="polite"></span>
+                </article>
+
+                <article class="crypto-card">
+                    <div class="coin-heading">
+                        <span class="coin-icon litecoin" aria-hidden="true">Ł</span>
+                        <div><h3>Litecoin</h3><span class="ticker">LTC</span></div>
+                    </div>
+                    <p class="address-label">Wallet address</p>
+                    <div class="address-container">
+                        <code id="ltc-address">Ld9MM9EbTPbKS3SCNswz7DgodFCD3Jsy5A</code>
+                        <button type="button" class="copy-button" onclick="copyAddress('ltc-address')">Copy</button>
+                    </div>
+                    <span class="copy-feedback" aria-live="polite"></span>
+                </article>
+
+                <article class="crypto-card">
+                    <div class="coin-heading">
+                        <span class="coin-icon solana" aria-hidden="true">≋</span>
+                        <div><h3>Solana</h3><span class="ticker">SOL</span></div>
+                    </div>
+                    <p class="address-label">Wallet address</p>
+                    <div class="address-container">
+                        <code id="sol-address">kJ9oFSqJPrJyjpzvkjHBrx76pwgFp55KcfjhzvhfZNd</code>
+                        <button type="button" class="copy-button" onclick="copyAddress('sol-address')">Copy</button>
+                    </div>
+                    <span class="copy-feedback" aria-live="polite"></span>
+                </article>
+
+                <article class="crypto-card">
+                    <div class="coin-heading">
+                        <span class="coin-icon monero" aria-hidden="true">ɱ</span>
+                        <div><h3>Monero</h3><span class="ticker">XMR</span></div>
+                    </div>
+                    <p class="address-label">Wallet address</p>
+                    <div class="address-container">
+                        <code id="xmr-address">44oBqR4efwifQe4PHGexRVGFuoBKQz4nxAeR6p9Ee7oZ44tamYJfh8EUQGuVKjHMjtEHF19WtFXXzZ1V3srr53zURDFhueA</code>
+                        <button type="button" class="copy-button" onclick="copyAddress('xmr-address')">Copy</button>
+                    </div>
+                    <span class="copy-feedback" aria-live="polite"></span>
+                </article>
             </div>
+        </section>
 
-            <!-- Leaderboard Section (Always visible) -->
-            <div class="leaderboard-section">
-                <h2>Top Donors</h2>
-                <div class="leaderboard-container" id="leaderboard-container">
-                    <div class="leaderboard-item">
-                        <p><strong>1. unknown</strong> - $0</p>
-                    </div>
-                    <div class="leaderboard-item">
-                        <p><strong>2. unknown</strong> - $0</p>
-                    </div>
-                    <div class="leaderboard-item">
-                        <p><strong>3. unknown</strong> - $0</p>
-                    </div>
-                    <div class="leaderboard-item">
-                        <p><strong>4. unknown</strong> - $0</p>
-                    </div>
-                    <div class="leaderboard-item">
-                        <p><strong>5. unknown</strong> - $0</p>
-                    </div>
+        <section class="leaderboard-section" aria-labelledby="leaderboard-title">
+            <div class="leaderboard-heading">
+                <div>
+                    <p class="eyebrow">COMMUNITY</p>
+                    <h2 id="leaderboard-title">Supporter leaderboard</h2>
                 </div>
+                <span class="leaderboard-badge">Starting fresh</span>
             </div>
-        </div>
+            <div class="leaderboard-empty">
+                <span class="leaderboard-icon" aria-hidden="true">✦</span>
+                <p><strong>No supporters listed yet</strong><br>Be the first to show your support.</p>
+            </div>
+            <p class="leaderboard-note">Crypto transfers aren’t tracked automatically on this page, so supporter names and totals are updated manually.</p>
+        </section>
 
-        <!-- Footer -->
+        <aside class="reminder" aria-label="Sending reminder">
+            <span class="reminder-icon" aria-hidden="true">!</span>
+            <p><strong>Before you send</strong><br>Double-check the address and network. Crypto transfers usually cannot be reversed.</p>
+        </aside>
+
         <footer class="footer">
-            <p>Thank you for your support! ❤️</p>
+            <p>Made with care by zirjagor <span aria-hidden="true">·</span> Thank you for supporting gooner.</p>
         </footer>
-    </div>
-
-    <!-- Info Button -->
-    <button class="info-button" onclick="openPopup()">ℹ️</button>
-
-    <!-- Popup -->
-    <div class="popup" id="info-popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">❌</span>
-            <h2>Site Information</h2>
-            <p>This site was built by <strong>zirjagor</strong>.</p>
-            <p><strong>gooner Ethereum (ETH):</strong> 0xa67BB302d9846De757c5408AAfC1bBDEC01964B5</p>
-            <p><strong>Zirjagor's Litecoin (LTC):</strong> Ld9MM9EbTPbKS3SCNswz7DgodFCD3Jsy5A</p>
-            <button onclick="copyAddress('eth-address')">Copy ETH Address</button>
-            <button onclick="copyAddress('ltc-address')">Copy LTC Address</button>
-        </div>
-    </div>
-
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
